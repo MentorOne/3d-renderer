@@ -1,21 +1,22 @@
-Dim Shared SIZE As Integer
+Dim SIZE As Shared Integer
 SIZE = 800 ' Set to 320 if you want to use Screen 13
 
-bscreen = _NewImage(SIZE, SIZE, 32)
-Screen bscreen
+' Change these using FreeBasic ScreenRes and ImageCreate.
+' bscreen = _NewImage(SIZE, SIZE, 32)
+' Screen bscreen
 
 ' FOV is a calculated value that gets multiplied with X and Y to deliver a field of view
 ' ZMul and ZAdd both transform the Z axis based on a Near and Far value
-Dim Shared FOV As Double, ZMul As Double, ZAdd As Double
+Dim FOV As Shared Double, ZMul As Shared Double, ZAdd As Shared Double
 ' x y and z are used in this program to simulate the camera moving
-Dim Shared x As Double, y As Double, z As Double
+Dim x As Shared Double, y As Shared Double, z As Shared Double
 ' useXY and Z are static variables used by "applyRotation" to save writing three rotation functions
 ' Write your Call applyRotation(x, y, z)
-Dim Shared useX As Double, useY As Double, useZ As Double
+Dim useX As Shared Double, useY As Shared Double, useZ As Shared Double
 
 ' time is incremented by 0.1 every frame
 ' Resolution is the step of the triangle; ex a resolution of 4 will draw pixels 4x4 wide
-Dim Shared time As Double, resolution As Double
+Dim time As Shared Double, resolution As Shared Double
 resolution = 4
 
 ' The 20.00 in this statement is the FOV Angle
@@ -33,8 +34,8 @@ z = -100
 ' Two depth related arrays, enveloping the whole (square) screen.
 ' Depth stores distance from the camera
 ' DepthTime stores the "time" that a pixel was last updated. So that I can continue using Depth without having to reset it every time
-Dim Shared Depth((SIZE / resolution) ^ 2) As Double
-Dim Shared DepthTime((SIZE / resolution) ^ 2) As Double
+Dim Depth((SIZE / resolution) ^ 2) As Shared Double
+Dim DepthTime((SIZE / resolution) ^ 2) As Shared Double
 
 ' Rotation in X, Y, and Z
 Dim RX As Double, RY As Double, RZ As Double
